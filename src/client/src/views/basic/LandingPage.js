@@ -1,19 +1,96 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import doc from "./static/docconsult.webp";
 
 const LandingPage = () => {
   return (
     <div>
-      <div className="bg-gray-900 p-20 h-screen flex justify-center items-start flex-col">
-        <h1 className="text-5xl text-white"> Team BASIC V. 👋</h1>
-        <p className="text-gray-400 mt-5 text-lg">
-          B(ibhash) - A(nurag) - S(aheb) - I(shan) - C(harmi) - V(inayak) !!!
-        </p>
-        <Link to="/login">
-          <button class="p-4 bg-green-600 rounded-lg font-bold text-white mt-5 hover:bg-gray-600">
-            Lets Begin !
-          </button>
-        </Link>
+      <div className=" w-screen flex justify-center items-start flex-col">
+        <div
+          className="h-80 bg-gradient-to-r from-sky-500 to-indigo-500 w-full flex items-start justify-center flex-col"
+          style={{ marginTop: "80px" }}
+        >
+          <h2 className="ml-16 font-bold md:text-5xl text-2xl text-white md:max-w-full max-w-sm ">
+            SUGAM - स्वस्थ भारत के लिए एक विकसित प्रयास
+          </h2>
+          {localStorage.getItem("profile") ? (
+            <Link to="/dashboard">
+              <button className="btn px-8 py-2 ml-16 bg-orange-500 rounded-md mt-6 text-xl text-white font-semibold">
+                Dashboard
+              </button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button className="btn px-8 py-2 ml-16 bg-orange-500 rounded-md mt-6 text-xl text-white font-semibold">
+                LogIn
+              </button>
+            </Link>
+          )}
+        </div>
+        <div className="my-8">
+          <div className="hd w-full text-center">
+            <h2 className="font-bold mx-4 md:text-3xl text-2xl">
+              What would you like to do today ?
+            </h2>
+          </div>
+          <div className="bx my-6 flex flex-wrap justify-center items-center w-screen">
+            <div className="card px-2 py-4 bg-pink-100 hover:bg-pink-200 rounded-2xl flex items-center justify-between m-4 md:w-2/5 w-full cursor-pointer transition duration-150 ease-out hover:ease-in hover:shadow-pink-400 hover:shadow-lg mx-6">
+              <div className="txt flex flex-col items-start justify-start ml-4 ">
+                <h2 className="md:text-2xl text-lg font-medium">
+                  Consult
+                  <br></br>
+                  Doctors Online
+                </h2>
+                <p className="text-pink-800 font-bold">
+                  250 Off on 1st Consultation
+                </p>
+              </div>
+              <img src={doc} className="w-35 h-40"></img>
+            </div>
+
+            <div className="card px-2 py-4 bg-orange-100 hover:bg-orange-200 rounded-2xl flex items-center justify-between m-4 md:w-2/5 w-full cursor-pointer transition duration-150 ease-out hover:ease-in hover:shadow-orange-400 hover:shadow-lg mx-6">
+              <div className="txt flex flex-col items-start justify-start ml-4 ">
+                <h2 className="md:text-2xl font-medium text-lg">
+                  Consult
+                  <br></br>
+                  Doctors Online
+                </h2>
+                <p className="text-orange-800 font-bold">
+                  250 Off on 1st Consultation
+                </p>
+              </div>
+              <img src={doc} className="w-35 h-40"></img>
+            </div>
+
+            <div className="card px-2 py-4 bg-blue-100 hover:bg-blue-200 rounded-2xl flex items-center justify-between m-4 md:w-2/5 w-full cursor-pointer transition duration-150 ease-out hover:ease-in hover:shadow-blue-400 hover:shadow-lg mx-6">
+              <div className="txt flex flex-col items-start justify-start ml-4">
+                <h2 className="md:text-2xl font-medium text-lg">
+                  Consult
+                  <br></br>
+                  Doctors Online
+                </h2>
+                <p className="text-blue-800 font-bold">
+                  250 Off on 1st Consultation
+                </p>
+              </div>
+              <img src={doc} className="w-35 h-40"></img>
+            </div>
+
+            <div className="card px-2 py-4 bg-green-100 hover:bg-green-200 rounded-2xl flex items-center justify-between m-4 md:w-2/5 w-full cursor-pointer transition duration-150 ease-out hover:ease-in hover:shadow-green-400 hover:shadow-lg mx-6">
+              <div className="txt flex flex-col items-start justify-start ml-4 ">
+                <h2 className="md:text-2xl font-medium text-lg">
+                  Consult
+                  <br></br>
+                  Doctors Online
+                </h2>
+                <p className="text-green-800 font-bold">
+                  250 Off on 1st Consultation
+                </p>
+              </div>
+              <img src={doc} className="w-35 h-40"></img>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

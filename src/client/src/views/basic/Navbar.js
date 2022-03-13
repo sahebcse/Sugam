@@ -38,116 +38,116 @@ import { useSelector } from "react-redux";
 
 // export default Navbar;
 
-import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom'
-import styled from 'styled-components';
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 // import { GiIronMask } from "react-icons/gi";
 import { FaTimes, FaBars } from "react-icons/fa";
 // import logo from '../../assets/vinayak.png'
 // import * as ROUTES from '../../constants/routes'
-import logo from '../../images/text_clear.png';
+import logo from "../../images/text_clear.png";
 
-export default function Navbar(){
-    const navigate = useNavigate()
+export default function Navbar() {
+  const navigate = useNavigate();
 
-    const user = JSON.parse(localStorage.getItem('profile'))
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   const account = useSelector((state) => state.Auth);
 
-    const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false);
 
-    const handleClick = () =>{
-        setClick(!click);
-    }
+  const handleClick = () => {
+    setClick(!click);
+  };
 
-    const handleLogout = ()=>{
-        localStorage.removeItem('profile')
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("profile");
+    window.location.reload();
+  };
 
-    return(
-        <React.Fragment>
-            <Nav>
-                <NavBarContainer>
-                    <NavLogo to="/">
-                        <Logo src={logo} alt="" />
-                    </NavLogo>
-                    <Hamburger onClick={handleClick}>
-                        { click ? <FaTimes /> : <FaBars />}
-                    </Hamburger>
-                    <NavMenu onClick={handleClick} click={click}>
-                        <NavItem>
-                            <NavLinks to="/">
-                                Link 1
-                            </NavLinks>
-                        </NavItem>
-                        <NavItem>
-                            <NavLinks to="/">
-                                Link 2
-                            </NavLinks>
-                        </NavItem>
-                        {/* <NavItem>
+  return (
+    <React.Fragment>
+      <Nav>
+        <NavBarContainer>
+          <NavLogo to="/">
+            <Logo src={logo} alt="" />
+          </NavLogo>
+          <Hamburger onClick={handleClick}>
+            {click ? <FaTimes /> : <FaBars />}
+          </Hamburger>
+          <NavMenu onClick={handleClick} click={click}>
+            <NavItem>
+              <NavLinks to="/">Link 1</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="/">Link 2</NavLinks>
+            </NavItem>
+            {/* <NavItem>
                             <NavLinks to="/">
                                 Hire Me
                             </NavLinks>
                         </NavItem> */}
-                        <div className="mx-10" to="/login">
-                            {!user ? (
-                            <NavLinks to="/login">Login</NavLinks>
-                            ) : (
-                            <div className="acc text-white bg-blue-400 px-2">
-                                {user.fullName.slice(0, 3).toUpperCase()}
-                            </div>
-                            )}
-                        </div>
+            <div className="mx-10" to="/login">
+              {!user ? (
+                <NavLinks to="/login">Login</NavLinks>
+              ) : (
+                <div className="acc text-white bg-blue-400 px-2">
+                  {user.fullName.slice(0, 3).toUpperCase()}
+                </div>
+              )}
+            </div>
 
-                        {user && <NavItem>
-                            <NavLinks to="/" onClick={handleLogout}>
-                            Logout
-                            </NavLinks>
-                        </NavItem>}
-
-                    </NavMenu>
-                </NavBarContainer>
-            </Nav>
-        </React.Fragment>
-    )
+            {user && (
+              <NavItem>
+                <NavLinks to="/" onClick={handleLogout}>
+                  Logout
+                </NavLinks>
+              </NavItem>
+            )}
+          </NavMenu>
+        </NavBarContainer>
+      </Nav>
+    </React.Fragment>
+  );
 }
 
 const Nav = styled.div`
-    background-color: #FFF;
-    height:80px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:1.2rem;
-    top: 0;
-    
-    z-index:999;
+  background-color: #fff;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 `;
 
 const NavBarContainer = styled.div`
-    background: #FFF;
-    display:flex;
-    justify-content:space-between;
-    height:80px;
-    box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  box-sizing: border-box;
 `;
 
 const NavLogo = styled(Link)`
-    color: #000;
-    font-weight: bold;
-    font-size: 1.5rem;
-    display:flex;
-    align-items:center;
-    justify-self: start;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  text-decoration: none;
+  cursor: pointer;
 `;
 
 const Logo = styled.img`
-    width: 70px;
-    height: 70px;
+  width: 70px;
+  height: 70px;
 `;
 
 // const NavIcon = styled(GiIronMask)`
@@ -157,38 +157,37 @@ const Logo = styled.img`
 // const NavPersonalLogo = styled.img``;
 
 const Hamburger = styled.div`
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 1.8rem;
-        cursor: pointer;
-        transform: translate(-100%, 60%);
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transform: translate(-100%, 60%);
 `;
 
-
 const NavMenu = styled.ul`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    left: -100%;
-    background: rgba(0,0,0,0.5);
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 80px;
-    left: ${({click}) => (click ? 0 : '-100%')};
-    transition: all 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  left: -100%;
+  background: rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 80px;
+  left: ${({ click }) => (click ? 0 : "-100%")};
+  transition: all 0.5s ease;
 `;
 
 const NavItem = styled.li`
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    margin: 0 0.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.125rem;
 `;
 
 const NavLinks = styled(Link)`
