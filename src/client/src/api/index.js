@@ -45,6 +45,8 @@ export const uploadPrescription = (sendData)=> axios.post(`${URL}/prescription`,
 export const confirmPrescription = ()=> axios.get(`${URL}/prescription`)
 
 export const assignPrescription = (sendData)=> axios.post(`${URL}/assignprescription`,sendData)
+
+export const getNearbyAppointments=(sendData)=>axios.post(`${URL}/nearby/patients/5`, sendData)
 //Emergency API
 
 export const createEmergency= (sendData) => axios.post(`${URL}/emergency`, sendData)
@@ -61,7 +63,7 @@ export const getUnconfirmedEmergency = (sendData) => axios.get(`${URL}/emergency
 
 export const getPatientById = (sendData) =>axios.get(`${URL}/patient/${sendData.patientId}`)
 
-export const editPatientById = (sendData) => axios.put(`${URL}/patient/${sendData.patientId}`);
+export const editPatientById = (sendData) => axios.put(`${URL}/patient/${sendData.patientId}`, sendData);
 
 // Medicine API
 

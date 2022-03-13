@@ -2,12 +2,13 @@ import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { bookAppointment } from '../../api'
 import MapGeolocation from '../Map/MapGeolocation'
-
+import MapMarker from '../Map/MapMarker'
 
 export default function BookAppointment() {
     const [description, setDescription]=useState('')
     const [date, setDate]=useState('')
     const [coordinates, setCoordinates]=useState({latitude: 0, longitude: 0})
+    const [mapState, setMapState]=useState({latitude: 0, longitude: 0, zoom: 14})
     const patient=JSON.parse(localStorage.getItem('profile'))
     const navigate=useNavigate()
 
@@ -41,22 +42,22 @@ export default function BookAppointment() {
             date: date,
             patientId: patient._id,
             pincode: '824231',
-            latitude: coordinates.latitude,
-            longitude: coordinates.longitude
+            latitude: mapState.latitude,
+            longitude: mapState.longitude
         }
         console.log(formData)
         bookNewAppointment(formData)
 
         
     }
-
+    
     useEffect(()=>
     {
         navigator.geolocation.getCurrentPosition(pos=>{
             console.log(pos)
-            setCoordinates({latitude: pos.coords.latitude, longitude: pos.coords.longitude})
+            setMapState({latitude: pos.coords.latitude, longitude: pos.coords.longitude, zoom: 7})
         })
-    }, [])
+    }, []) 
   return (
     <div className='grid grid-cols-7'>
         <div className='col-span-2'></div>
@@ -80,9 +81,10 @@ export default function BookAppointment() {
                                     />
                                     
             </div>
-            <h2 className='text-3xl font-semibold mt-5'>Patient Location</h2>
-            <MapGeolocation />
-            
+            <h2 className='text-3xl font-semibold mt-5'>Patient Location (Click on locate)</h2>
+            <MapMarker mapState={mapState} setMapState={setMapState}/>
+            latitude: {mapState.latitude}
+            longitude: {mapState.longitude}
             <button onClick={handleAppointmentSubmit} className='bg-blue-400 hover:bg-green-400 w-full p-5 mt-5 rounded-2xl'>
                 Submit
             </button>
