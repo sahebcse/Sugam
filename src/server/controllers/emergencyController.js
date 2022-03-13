@@ -37,8 +37,8 @@ const createEmergency=async (req, res)=>
             patient: req.body.patientId,
             pincode: req.body.pincode,  //Change this later to patient.address.pincode
             description: req.body.description,
-            latitude: req.body.latitude,
-            longitude: req.body.longitude,
+            patientLatitude: req.body.latitude,
+            patientLongitude: req.body.longitude,
             emergency: true,
             status: 'sos',
             typeOfEmergency: req.body.typeOfEmergency
