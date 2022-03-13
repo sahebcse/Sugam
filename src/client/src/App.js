@@ -46,6 +46,7 @@ import HealthcareWorkerChatWindow from "./components/chat/HealthcareWorkerChatWi
 import ConfirmPrescription from "./components/HealthWorker/ConfirmPrescription";
 import WorkerRespondToSos from "./components/HealthWorker/WorkerRespondToSos";
 import Footer from "./views/basic/Footer";
+import BMICalc from "./components/Extras/BMICalc";
 
 function App() {
   const dispatch = useDispatch();
@@ -100,6 +101,9 @@ function App() {
             path="/worker_respond_to_sos"
             element={<WorkerRespondToSos />}
           />
+
+
+          <Route exact path="/bmi_calc" element={<BMICalc />} />
         </Routes>
         <Footer />
       </Router>
