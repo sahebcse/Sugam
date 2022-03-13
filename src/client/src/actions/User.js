@@ -86,3 +86,11 @@ export const uploadPrescription = async (sendData, navigate)=>{
         console.log(error.message)
     }
 }
+
+export const getBookedPrescriptions= async ()=>{
+
+}
+
+export const getResolvedPrescriptions=async ()=>{
+
+}

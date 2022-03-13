@@ -43,6 +43,8 @@ import AppointmentWindow from "./views/basic/AppointmentWindow";
 import PatientChatWindow from "./components/chat/PatientChatWindow";
 import DoctorChatWindow from "./components/chat/DoctorChatWindow";
 import HealthcareWorkerChatWindow from "./components/chat/HealthcareWorkerChatWindow";
+import ConfirmPrescription from "./components/HealthWorker/ConfirmPrescription";
+import WorkerRespondToSos from "./components/HealthWorker/WorkerRespondToSos";
 
 
 function App() {
@@ -84,9 +86,11 @@ function App() {
           <Route path="/appointment/:appointmentId" element={<AppointmentWindow/>} />
           <Route path="/prescription/:id" element={<Prescription/>} />
 
-          <Route exact path="/patient-chat" element={<PatientChatWindow />} />
-          <Route exact path="/doctor-chat" element={<DoctorChatWindow/>} />
-          <Route exact path="/healthcareWorker-chat" element={<HealthcareWorkerChatWindow />} />
+
+          {/* HEALTHWORKER DASHBOARD ROUTES */}
+          <Route exact path="/confirm_prescription" element={<ConfirmPrescription/>} />
+          <Route exact path="/worker_respond_to_sos" element={<WorkerRespondToSos/>} />
+
 
         </Routes>
       </Router>
