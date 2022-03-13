@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {Modal, Box} from '@mui/material'
+import MapPoint from '../Map/MapPoint';
 
 const style = {
   position: 'absolute',
@@ -47,9 +48,12 @@ const Doctorinfo = ({appointment}) => {
         >
         <Box sx={style}>
           {
-            (appointment?.doctor?<div><p>Full Name: {appointment?.patient.fullName} </p>
-            <p>Email: {appointment?.patient.email}</p></div>:<div>Doctor doesn't exist</div>)
+            (appointment?.doctor?<div><p>Full Name: {appointment?.doctor.fullName} </p>
+            <p>Email: {appointment?.doctor.email}<MapPoint latitudeVal={appointment?.doctorLatitude} longitudeVal={appointment?.doctorLongitude} /></p></div>:<div>Doctor doesn't exist</div>)
+            
           }
+          
+          
         </Box>
       </Modal>
 
