@@ -43,6 +43,7 @@ import AppointmentWindow from "./views/basic/AppointmentWindow";
 import PatientChatWindow from "./components/chat/PatientChatWindow";
 import DoctorChatWindow from "./components/chat/DoctorChatWindow";
 import HealthcareWorkerChatWindow from "./components/chat/HealthcareWorkerChatWindow";
+import Medicine from "./components/Medicine";
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/book_appointment" element={<BookAppointment />} />
           <Route path="/create_sos" element={<CreateSos />} />
+          <Route path="/medicines" element={<Medicine />} />
 
 
           <Route path="/video" element={<Navigate to={`/room/${uuidv4()}`} replace />} />

@@ -56,3 +56,7 @@ export const getUnconfirmedEmergency = (sendData) => axios.get(`${URL}/emergency
 //Patient API
 
 export const getPatientById = (sendData) =>axios.get(`${URL}/patient/${sendData.patientId}`)
+
+// Medicine API
+
+// export const getMedicines = () => axios.get(`https://api.fda.gov/drug/drugsfda.json?limit=50`);
