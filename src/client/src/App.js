@@ -84,10 +84,6 @@ function App() {
           <Route path="/appointment/:appointmentId" element={<AppointmentWindow/>} />
           <Route path="/prescription/:id" element={<Prescription/>} />
 
-          <Route exact path="/patient-chat" element={<PatientChatWindow />} />
-          <Route exact path="/doctor-chat" element={<DoctorChatWindow/>} />
-          <Route exact path="/healthcareWorker-chat" element={<HealthcareWorkerChatWindow />} />
-
         </Routes>
       </Router>
     </div>
