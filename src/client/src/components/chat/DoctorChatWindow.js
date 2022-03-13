@@ -1,7 +1,5 @@
-import { useParams } from 'react-router-dom'
 import io from 'socket.io-client';
 import { useState,useEffect } from 'react'
-import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -11,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import { Button, TextField } from '@mui/material';
+import { config } from '../../config/urlConfig'
 
 const useStyles = makeStyles({
   selfMsg:{ 
@@ -71,7 +70,8 @@ function a11yProps(index) {
 
 
 
-export default function  DoctorChatWindow() {
+export default function  DoctorChatWindow(props) {
+  const URL = config.url;
   const worker=JSON.parse(localStorage.getItem("profile"));
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
@@ -81,14 +81,11 @@ export default function  DoctorChatWindow() {
     setValue(newValue);
   };
 
-  const search = useLocation().search;
-  const query=new URLSearchParams(search);
-
   //fixed values for testing
-  const appointmentId=query.get('appointmentId')||'6229c0748b13cd0e922d84df';
-  const doctorId=query.get('doctorId')||'6229bfc18b13cd0e922d84d6';
-  const healthcareWorkerId=query.get('healthcareWorkerId')||'6229c04c8b13cd0e922d84dc';
-  const patientId=query.get('patientId')||'6229bf4f8b13cd0e922d84d3';
+  const appointmentId=props.appointmentId||'6229c0748b13cd0e922d84df';
+  const doctorId=props.doctorId||'6229bfc18b13cd0e922d84d6';
+  const healthcareWorkerId=props.healthcareWorkerId||'6229c04c8b13cd0e922d84dc';
+  const patientId=props.patientId||'6229bf4f8b13cd0e922d84d3';
 
   const [ptext,setpText]=useState("");
   const [htext,sethText]=useState("");
@@ -100,7 +97,7 @@ export default function  DoctorChatWindow() {
 
   //fetch chat history
   useEffect(()=>{
-    axios.get(`http://localhost:5000/chat/get/${appointmentId}`)
+    axios.get(`${URL}/chat/get/${appointmentId}`)
     .then((response)=>{
       response.data.chats.forEach((c)=>{
         let temp;

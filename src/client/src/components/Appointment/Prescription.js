@@ -77,9 +77,6 @@ const Prescription = () => {
                 )
             })}
         </div>
-    {true && <div >
-       
-    </div>}
         </div>
   )
 }
