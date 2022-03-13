@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Modal, Box} from '@mui/material'
 import MapGeolocation from '../Map/MapGeolocation';
+import MapPoint from '../Map/MapPoint';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -40,10 +41,10 @@ const Userinfo = ({appointment}) => {
           onClose={handleClose}
           >
           <Box sx={style}>
-            <button onClick={handleClose}>Close Modal</button>
+            
             <p>Full Name: {appointment?.patient.fullName} </p>
             <p>Email: {appointment?.patient.email}</p>
-            <MapGeolocation />
+            <MapPoint latitudeVal={appointment?.patientLatitude} longitudeVal={appointment?.patientLongitude} />
           </Box>
         </Modal>
  
