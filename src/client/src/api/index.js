@@ -40,7 +40,11 @@ export const getUnconfirmedAppoinment = ()=> axios.get(`${URL}/appointments/all`
 
 export const getDoctorAppointments = (sendData)=> axios.get(`${URL}/doctorAppointments/${sendData.id}/${sendData.status}`)
 
-export const uploadPrescription = (sendData)=> axios.post(`${URL}/prescription/`, sendData)
+export const uploadPrescription = (sendData)=> axios.post(`${URL}/prescription`, sendData)
+
+export const confirmPrescription = ()=> axios.get(`${URL}/prescription`)
+
+export const assignPrescription = (sendData)=> axios.post(`${URL}/assignprescription`,sendData)
 
 export const getNearbyAppointments=(sendData)=>axios.post(`${URL}/nearby/patients/5`, sendData)
 //Emergency API

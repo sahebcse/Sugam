@@ -74,7 +74,7 @@ export default function AppointmentWindow() {
               className="border p-3 rounded-xl hover:shadow-2xl shadow-sm cursor-pointer transition hover:ease-linear ease-out group"
               onClick={() =>
                 navigate(`/prescription/${appointmentId}`, {
-                  state: appointment?.prescription,
+                  state: {prescription:appointment?.prescription,patient:appointment?.patient._id}
                 })
               }
             >

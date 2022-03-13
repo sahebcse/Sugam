@@ -13,6 +13,10 @@ const prescriptionSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Appointment'
     },
+    health:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'HealthcareWorker'
+    },
     date: {
         type: String,
         default: Date.now
