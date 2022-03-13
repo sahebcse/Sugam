@@ -32,6 +32,8 @@ import RespondToSos from "./components/Doctor/RespondToSos";
 import CreatePrescription from './components/Doctor/CreatePrescription'
 import Prescription from "./components/Appointment/Prescription";
 
+import Medicine from "./components/Medicine";
+
 
 import Video from './components/conference/Video'
 import MapMarker from "./components/Map/MapMarker";
@@ -43,6 +45,8 @@ import AppointmentWindow from "./views/basic/AppointmentWindow";
 import PatientChatWindow from "./components/chat/PatientChatWindow";
 import DoctorChatWindow from "./components/chat/DoctorChatWindow";
 import HealthcareWorkerChatWindow from "./components/chat/HealthcareWorkerChatWindow";
+import ConfirmPrescription from "./components/HealthWorker/ConfirmPrescription";
+import WorkerRespondToSos from "./components/HealthWorker/WorkerRespondToSos";
 
 
 function App() {
@@ -63,6 +67,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/book_appointment" element={<BookAppointment />} />
           <Route path="/create_sos" element={<CreateSos />} />
+          
+          <Route path="/medicines" element={<Medicine />} />
 
 
           <Route path="/video" element={<Navigate to={`/room/${uuidv4()}`} replace />} />
@@ -84,9 +90,11 @@ function App() {
           <Route path="/appointment/:appointmentId" element={<AppointmentWindow/>} />
           <Route path="/prescription/:id" element={<Prescription/>} />
 
-          <Route exact path="/patient-chat" element={<PatientChatWindow />} />
-          <Route exact path="/doctor-chat" element={<DoctorChatWindow/>} />
-          <Route exact path="/healthcareWorker-chat" element={<HealthcareWorkerChatWindow />} />
+
+          {/* HEALTHWORKER DASHBOARD ROUTES */}
+          <Route exact path="/confirm_prescription" element={<ConfirmPrescription/>} />
+          <Route exact path="/worker_respond_to_sos" element={<WorkerRespondToSos/>} />
+
 
         </Routes>
       </Router>

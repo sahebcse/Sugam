@@ -57,7 +57,7 @@ export default function AppointmentWindow() {
                     Video
                 </div>
                 <UserInfo/>
-                <div className="h-60 bg-red-200 rounded border p-3 hover:bg-red-400" onClick={()=>navigate(`/prescription/${appointmentId}`, {state:appointment?.prescription})}>
+                <div className="h-60 bg-red-200 rounded border p-3 hover:bg-red-400" onClick={()=>navigate(`/prescription/${appointmentId}`, {state:{allprescription:appointment?.prescription, patientId:appointment?.patient?._id}})}>
                     Prescription
                 </div>
                 </div>
