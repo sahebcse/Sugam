@@ -2,6 +2,7 @@ const Prescription=require('../models/prescriptionModel')
 const Doctor=require('../models/doctorModel')
 const Patient=require('../models/patientModel')
 const Appointment=require('../models/appointmentModel')
+const Helper=require('../models/healthcareWorkerModel')
 
 const createPrescription=async (req, res)=>
 {
@@ -41,6 +42,39 @@ const getPrescriptionById=async (req, res)=>
     }
 }
 
+const getPrescription=async (req, res)=>
+{
+    try{
+        console.log("working")
+        const prescription=await Prescription.find().populate('appointment')
+        res.json(prescription)
+    }
+    catch(error)
+    {
+        console.log(error)
+        res.status(404).json(error)
+    }
+}
+
+const assignPrescription=async (req, res)=>
+{
+    try{
+        console.log("working")
+        const prescription=await Prescription.findById(req.body.id)
+        const heper =await Helper.findById(req.body.helperId)
+        heper.prescriptions.push(id)
+        prescription.health=heper._id
+        await heper.save();
+        await prescription.save()
+        res.json(prescription)
+    }
+    catch(error)
+    {
+        console.log(error)
+        res.status(404).json(error)
+    }
+}
+
 const deletePrescriptionById=async (req, res)=>
 {
     try{
@@ -56,4 +90,4 @@ const deletePrescriptionById=async (req, res)=>
 
 
 
-module.exports={createPrescription, getPrescriptionById, deletePrescriptionById}
+module.exports={createPrescription, assignPrescription,getPrescriptionById,getPrescription, deletePrescriptionById}

@@ -87,6 +87,30 @@ export const uploadPrescription = async (sendData, navigate)=>{
     }
 }
 
+export const confirmPrescription = async (setPrescriptions)=>{
+    try {
+        const response = await api.confirmPrescription();
+
+      if (response.status !== 200) throw Error(response.data.message);
+      const data = response.data;
+      setPrescriptions(data)
+      console.log(data)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+export const assignPrescription = async (sendData)=>{
+    try {
+        const response = await api.assignPrescription(sendData);
+
+      if (response.status !== 200) throw Error(response.data.message);
+      const data = response.data;
+      console.log(data)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 export const getBookedPrescriptions= async ()=>{
 
 }

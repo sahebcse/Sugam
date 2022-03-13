@@ -67,8 +67,8 @@ export default function CreatePrescription({patientId}) {
 
    
   return (
-    <div className='grid grid-cols-7 mt-3'>
-        <div className='col-span-7  mt-16 shadow-3xl border-solid border-green-400 border-2 p-5 rounded-3xl'>
+    <div className='grid grid-cols-7 mt-3 '>
+        <div className='col-span-7 md:col-span-4 md:col-start-2  mt-16 shadow-3xl border-solid border-green-400 border-2 p-5 rounded-3xl'>
         <div className="m-1 w-full flex justify-center">
               Create prescription
             </div>
