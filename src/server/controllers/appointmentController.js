@@ -55,8 +55,8 @@ const createAppointment=async (req, res)=>
             patient: req.body.patientId,
             pincode: req.body.pincode,
             description: req.body.description,
-            latitude: req.body.latitude,
-            longitude: req.body.longitude
+            patientLatitude: req.body.latitude,
+            patientLongitude: req.body.longitude
 
         })
         console.log(tempAppointment)
@@ -89,7 +89,7 @@ const editAppointment=async (req, res)=>
 const getAppointmentById=async (req, res)=>
 {
     try{
-        const appointment=await Appointment.findById(req.params.id).populate('patient').populate('doctor').populate('prescription')
+        const appointment=await Appointment.findById(req.params.id).populate('patient').populate('doctor').populate('prescription').populate('healthcareWorker')
         return res.json(appointment)
     }
     catch(error)
@@ -158,7 +158,8 @@ const confirmAppointment=async (req, res)=>
         appointments.doctor = req.body.doctorId;
         appointments.status = 'scheduled'
         appointments.doctorAssigned=true
-
+        appointments.doctorLatitude=req.body.doctorLatitude
+        appointments.doctorLongitude=req.body.doctorLongitude
         const doctor = await Doctor.findById(req.body.doctorId)
         doctor.appointments.push(req.body.id)
         await doctor.save()
