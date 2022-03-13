@@ -27,7 +27,7 @@ const Prescription = () => {
     const {id}=useParams()
     const User = JSON.parse(localStorage.getItem('profile'))
     const {state}= useLocation()
-    const [prescriptions,setPrescriptions]=useState(state.allprescription)
+    const [prescriptions,setPrescriptions]=useState(state.allprescription||[])
     console.log(prescriptions)
     const [open, setOpen] = useState(false);
 

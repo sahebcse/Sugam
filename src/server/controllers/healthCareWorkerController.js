@@ -29,7 +29,7 @@ const getHealthcareWorkerById=async (req, res)=>
 const createHealthcareWorker=async (req, res)=>
 {
     try{
-        const tempPatient=new Patient({
+        const tempPatient=new HealthcareWorker({
             fullName: req.body.user.displayName,
             email: req.body.user.email,
             prescriptions:[],
@@ -37,7 +37,7 @@ const createHealthcareWorker=async (req, res)=>
             phone:req.body.user.phone
         })
 
-        const savedWorker=await tempWorker.save()
+        const savedWorker=await tempPatient.save()
         return res.json(savedWorker)
     }
     catch(error)
@@ -55,8 +55,6 @@ const loginHealthcareWorker=async (req, res)=>
        
        if(!worker)createHealthcareWorker(req,res);
        else res.status(200).json(worker)
-
-       res.status(200).json(worker)
     }
     catch(error)
     {

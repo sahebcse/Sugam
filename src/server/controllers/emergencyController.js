@@ -5,7 +5,7 @@ const Doctor=require('../models/doctorModel')
 const getEmergencyByPincodeAndStatus=async (req, res)=>
 {
     try{
-        const appointments=await Appointment.find({pincode: req.params.pincode, status: req.params.status, emergency: true}).populate('patient').populate('doctor').populate('prescription')
+        const appointments=await Appointment.find({  emergency: true}).populate('patient').populate('doctor').populate('prescription')
         res.json(appointments)
     }
     catch(error)
