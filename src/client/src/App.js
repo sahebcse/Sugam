@@ -38,6 +38,7 @@ import MapMarker from "./components/Map/MapMarker";
 import MapGeolocation from "./components/Map/MapGeolocation";
 import MapTwoPoints from "./components/Map/MapTwoPoints";
 import MapCustomSource from "./components/Map/MapCustomSource";
+import NearbyMapMarkers from "./components/Map/NearbyMapMarkers";
 
 import AppointmentWindow from "./views/basic/AppointmentWindow";
 import PatientChatWindow from "./components/chat/PatientChatWindow";
@@ -90,6 +91,7 @@ function App() {
             <Route path="/map_geolocation" element={<MapGeolocation />} />
             <Route path="/map_two_points" element={<MapTwoPoints />} />
             <Route path="/map_custom_source" element={<MapCustomSource />} />
+            <Route path="/nearby_map_markers" element={<NearbyMapMarkers /> } />
 
             <Route
               path="/appointment/:appointmentId"
@@ -111,7 +113,7 @@ function App() {
           </Routes>
         </Router>
       </div>
-    </>
+  
   );
 }
 

@@ -3,6 +3,7 @@ const Patient=require('../models/patientModel')
 const Doctor=require('../models/doctorModel')
 const { getAllPatients } = require('./patientController')
 const { json } = require('express/lib/response')
+const {distanceInKmBetweenEarthCoordinates, haversineDistance}=require('../utils/distcalc')
 
 const getAppointmentsByPincodeAndStatus=async (req, res)=>
 {
@@ -175,4 +176,35 @@ const confirmAppointment=async (req, res)=>
     }
 }
 
-module.exports={getAppointmentsByPincodeAndStatus,getDoctorBookedAppointments,confirmAppointment, getAppointmentsByPincode, getAllAppointments, createAppointment, editAppointment, getAppointmentById, deleteAppointmentById, getAppointmentsByPatient, getBookedAppointmentsByPatient}
+const getNearbyPatients=async (req, res)=>
+{
+    try{
+        console.log(req.params.range+"kms")
+        console.log("lat: "+req.body.latitude+" long: "+req.body.longitude)
+        //Calculate all coordinates in range from here
+        const appointments=await Appointment.find()
+        //Iterate appointments
+        var sol=[];
+        for (var i=0;i<appointments.length;i++)
+        {
+            console.log("Patient Lat: "+appointments[i].patientLatitude+" Patient Long: "+appointments[i].patientLongitude)
+            var dist=haversineDistance(appointments[i].patientLatitude, appointments[i].patientLongitude, 23.30036331626856, 85.30321040000001)
+           
+            console.log(dist)
+            if (dist<req.params.range)
+            {   
+                console.log("Pushing to map")
+                sol.push(appointments[i])
+            }
+
+            
+        }
+        res.json(sol) //Sends list of cooridantes as json that satisfy given range constraints based on Haversine distance
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+module.exports={getAppointmentsByPincodeAndStatus,getDoctorBookedAppointments, getNearbyPatients, confirmAppointment, getAppointmentsByPincode, getAllAppointments, createAppointment, editAppointment, getAppointmentById, deleteAppointmentById, getAppointmentsByPatient, getBookedAppointmentsByPatient}
