@@ -29,9 +29,9 @@ export default function DoctorDashboard() {
   return (<div className='col-span-7 md:col-span-5'>
   <div className='mt-10 bg-gradient-to-r from-indigo-600 to-indigo-100 py-20 rounded-xl grid md:grid-cols-2'>
       <div className='p-16'>
-          <h1 className='text-5xl font-semibold text-white'>Sugam Shauchalay</h1>
+          {/* <h1 className='text-5xl font-semibold text-white'>Sugam Shauchalay</h1>
           <p className='text-xl text-white mt-10'>Warna na karein</p>
-          <h2 className='text-4xl text-white font-bold'>Karein toh yahin karein</h2>
+          <h2 className='text-4xl text-white font-bold'>Karein toh yahin karein</h2> */}
           <button className='rounded-xl bg-white p-5 mt-10 text-indigo-800 font-semibold'>Know More</button>
       </div>
       
