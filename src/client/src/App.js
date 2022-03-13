@@ -47,6 +47,7 @@ import DoctorChatWindow from "./components/chat/DoctorChatWindow";
 import HealthcareWorkerChatWindow from "./components/chat/HealthcareWorkerChatWindow";
 import ConfirmPrescription from "./components/HealthWorker/ConfirmPrescription";
 import WorkerRespondToSos from "./components/HealthWorker/WorkerRespondToSos";
+import Settings from "./views/basic/Settings";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
           <Route path="/create_sos" element={<CreateSos />} />
           
           <Route path="/medicines" element={<Medicine />} />
+          <Route path="/editProfile" element={<Settings />} />
 
 
           <Route path="/video" element={<Navigate to={`/room/${uuidv4()}`} replace />} />
