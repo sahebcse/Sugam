@@ -63,6 +63,8 @@ export default function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("profile");
+
+    navigate("/");
     window.location.reload();
   };
 

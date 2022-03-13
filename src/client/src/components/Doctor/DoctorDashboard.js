@@ -52,11 +52,11 @@ export default function DoctorDashboard() {
       <div className="mt-10 grid md:grid-cols-3 gap-10">
         <div
           onClick={navigateToConfirmAppointment}
-          className="p-5 place-content-center rounded-xl hover:shadow-2xl shadow-sm cursor-pointer"
+          className="p-5 place-content-center rounded-xl shadow-sm cursor-pointer bg-blue-100  transition duration-150 ease-out hover:ease-in hover:shadow-blue-400 hover:shadow-lg hover:bg-blue-200  group"
         >
           <img
             src={require("./static/online-interview.png")}
-            className="mx-auto h-64"
+            className="mx-auto h-64 group-hover:scale-90  transition duration-150 ease-out hover:ease-in"
           />
           <p className="text-2xl font-semibold mx-auto mt-5 text-center">
             Confirm an Appointment
@@ -66,19 +66,22 @@ export default function DoctorDashboard() {
 
         <div
           onClick={navigateToRespondSos}
-          className="p-5 place-content-center hover:shadow-2xl shadow-sm cursor-pointer"
+          className="p-5 place-content-center shadow-sm cursor-pointer rounded-xl bg-orange-100  transition duration-150 ease-out hover:ease-in hover:shadow-orange-400 hover:shadow-lg hover:bg-orange-200 group"
         >
-          <img src={require("./static/sos.png")} className="mx-auto h-64" />
-          <p className="text-2xl ml-10 font-semibold mx-auto text-center mt-5">
+          <img
+            src={require("./static/sos.png")}
+            className="mx-auto h-64 group-hover:scale-90  transition duration-150 ease-out hover:ease-in"
+          />
+          <p className="text-2xl font-semibold mx-auto text-center mt-5">
             Respond to an Emergency
           </p>
           <p className=""></p>
         </div>
 
-        <div className="p-5 hover:shadow-2xl place-content-center shadow-sm cursor-pointer">
+        <div className="p-5 place-content-center shadow-sm cursor-pointer rounded-xl bg-green-100  transition duration-150 ease-out hover:ease-in hover:shadow-green-400 hover:shadow-lg hover:bg-green-200 group">
           <img
             src={require("./static/prescription.png")}
-            className="mx-auto h-64"
+            className="mx-auto h-64 group-hover:scale-90  transition duration-150 ease-out hover:ease-in"
           />
           <p className="text-2xl font-semibold mx-auto text-center mt-5">
             Create a Prescription
@@ -89,13 +92,13 @@ export default function DoctorDashboard() {
 
       <div className="w-full flex justify-center m-10">
         <button
-          className="px-4 py-2 bg-blue-300 text-3xl m-1 font-semibold rounded focus:bg-green-500 hover:bg-blue-700"
+          className="px-4 py-2 bg-blue-500 text-3xl m-1 font-semibold rounded focus:bg-green-500 hover:bg-blue-700 text-white"
           onClick={() => setCurrentAppointments(0)}
         >
           Booked Appointments
         </button>
         <button
-          className="px-4 py-2 bg-blue-300 text-3xl m-1 font-semibold rounded focus:bg-green-500 hover:bg-blue-700"
+          className="px-4 py-2 bg-blue-500 text-3xl m-1 font-semibold rounded focus:bg-green-500 hover:bg-blue-700 text-white"
           onClick={() => setCurrentAppointments(1)}
         >
           Resolved Appointments
