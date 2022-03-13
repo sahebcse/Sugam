@@ -22,7 +22,7 @@ export const loginPatient = (sendData) => axios.post(`${URL}/patient/login`, sen
 
 export const loginDoctor = (sendData) => axios.post(`${URL}/doctor/login`, sendData);
 
-export const loginHelper = (sendData) => axios.post(`${URL}/helper/login`, sendData);
+export const loginHelper = (sendData) => axios.post(`${URL}/healthcareworker/login`, sendData);
 
 //Appointment API
 

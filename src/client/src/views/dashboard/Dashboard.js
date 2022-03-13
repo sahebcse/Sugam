@@ -14,7 +14,7 @@ export default function Dashboard() {
                 return <PatientDashboard />
             case 'DOCTOR':
                 return <DoctorDashboard />
-            case 'HEALTHWORKER':
+            case 'HELPER':
                 return <HealthWorkerDashboard />
 
       }
