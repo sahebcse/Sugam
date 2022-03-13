@@ -9,6 +9,7 @@ import {useNavigate, useParams} from 'react-router-dom'
 import DoctorInfo from '../../components/Appointment/Doctorinfo'
 import UserInfo from '../../components/Appointment/Userinfo'
 
+import Modal from '@mui/material'
 import {getAppoinmentDataById} from '../../actions/User'
 
 
@@ -52,17 +53,19 @@ export default function AppointmentWindow() {
             </div> }
             <div className="col-span-12 lg:col-span-8">
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-                <DoctorInfo />
-                <div className="h-60 bg-red-200 rounded border p-3 hover:bg-red-400" onClick={()=>setVideo(!video)}>
+                <DoctorInfo appointment={appointment}/>
+                <div className=" rounded border p-3 rounded-xl shadow-2xl hover:shadow-sm cursor-pointer" onClick={()=>setVideo(!video)}>
+                <img src={require('../../components/Appointment/static/video.png')} className='mx-auto h-64'/>
                     Video
                 </div>
-                <UserInfo/>
-                <div className="h-60 bg-red-200 rounded border p-3 hover:bg-red-400" onClick={()=>navigate(`/prescription/${appointmentId}`, {state:appointment?.prescription})}>
+                <UserInfo appointment={appointment}/>
+                <div className=" rounded border p-3 rounded-xl shadow-2xl hover:shadow-sm cursor-pointer" onClick={()=>navigate(`/prescription/${appointmentId}`, {state:appointment?.prescription})}>
+                <img src={require('../../components/Appointment/static/medicine.png')} className='mx-auto h-64'/>
                     Prescription
                 </div>
                 </div>
             </div>
-            <div className="col-span-12 lg:col-span-4">
+            <div className="col-span-12 lg:col-span-4 order-first md:order-last">
               <ChatView />
             </div>
         </div>

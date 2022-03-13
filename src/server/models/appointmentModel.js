@@ -41,12 +41,29 @@ const appointmentSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'HealthcareWorker'
     },
-    latitude: {
-        type: Number
+    patientLatitude: {
+        type: Number,
+        default: 25
     },
-    longitude:
-    {
-        type: Number
+    patientLongitude: {
+        type: Number,
+        default: 85
+    },
+    doctorLatitude: {
+        type: Number,
+        default: 25
+    },
+    doctorLongitude:{
+        type: Number,
+        default: 85
+    },
+    helperLatitude: {
+        type: Number,
+        default: 25
+    },
+    helperLongitude: {
+        type: Number,
+        default: 85
     }
 })
 
