@@ -16,7 +16,7 @@ const createPrescription=async (req, res)=>
             scanPic:req.body.scanPic
         })
         const savedPrescription=await prescription.save()
-        appointment.prescription=savedPrescription._id
+        appointment.prescription.push(savedPrescription._id)
         await appointment.save()
         res.json(savedPrescription)
 

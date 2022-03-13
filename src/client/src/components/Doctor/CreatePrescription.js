@@ -8,7 +8,9 @@ import {Buffer} from 'buffer'
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) 
 
-export default function CreatePrescription() {
+export default function CreatePrescription({patientId}) {
+
+  const navigate=useNavigate()
 
   const [doctorPrescribed, setDoctorPrescribed]=useState('')
   const [generalInstructions, setGeneralInstructions]=useState('')
@@ -19,7 +21,6 @@ export default function CreatePrescription() {
 
 
   const doctor=JSON.parse(localStorage.getItem('profile'))
-  const navigate=useNavigate()
 
     const handleTitleChange=(e)=>
     {
@@ -57,8 +58,9 @@ export default function CreatePrescription() {
       setLoadingImage(false)
       NotificationManager.info("","Uploading ")
       e.preventDefault()
-      const sendData = {appointMentId:id, title:title,generalInstructions:generalInstructions,doctorPrescribed:doctorPrescribed,scanPic:`https://ipfs.infura.io/ipfs/${scanPic}` }
-      uploadPrescription(sendData)
+      const sendData = {appointmentId:id,patientId:patientId, doctorId:doctor?._id, title:title,generalInstructions:generalInstructions,doctorPrescribed:doctorPrescribed,scanPic:`https://ipfs.infura.io/ipfs/${scanPic}` }
+      uploadPrescription(sendData, navigate)
+      console.log(sendData)
       
   }
 
@@ -66,8 +68,10 @@ export default function CreatePrescription() {
    
   return (
     <div className='grid grid-cols-7 mt-3'>
-        <div className="col-span-2"></div>
-        <div className='col-span-7 sm:col-span-6 md:col-span-4 lg:col-span-3  mt-16 shadow-3xl border-solid border-green-400 border-2 p-5 rounded-3xl'>
+        <div className='col-span-7  mt-16 shadow-3xl border-solid border-green-400 border-2 p-5 rounded-3xl'>
+        <div className="m-1 w-full flex justify-center">
+              Create prescription
+            </div>
             <div class="mb-4">
               <label class="block text-gray-700 text-2xl font-bold mb-2" for="username">
                 Title
@@ -102,7 +106,6 @@ export default function CreatePrescription() {
             </div>
             
         </div>
-        <div className="col-span-2"></div>
 
     </div>
   )
