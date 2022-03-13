@@ -41,7 +41,7 @@ export default function PatientDashboard() {
   }, []);
 
   return (
-    <div className="col-span-7 md:col-span-5">
+    <div className="col-span-7 md:col-span-5 mb-5">
       <div className="mt-10 bg-gradient-to-r from-indigo-600 to-indigo-100 py-20 rounded-xl grid md:grid-cols-2">
         <div className="p-16">
           <h1 className="text-5xl font-semibold text-white">सुगम</h1>
@@ -137,9 +137,13 @@ export default function PatientDashboard() {
                     }}
                     className="mt-5 p-5 shadow-2xl bg-red-300 cursor-pointer"
                   >
-                    <p className="text-2xl">{appointment.description}</p>
-                    <p className="text-xl">{appointment.dateCreated}</p>
-                    <p className="text-xl">{appointment._id}</p>
+                    <p className="text-3xl font-bold">
+                      {appointment.description}
+                    </p>
+                    <p className="text-xl font-semibold">
+                      {new Date(Date(appointment?.dateCreated)).toDateString()}
+                    </p>
+                    <p className="text-xl text-zinc-500">{appointment._id}</p>
                   </div>
                 )}
               </div>
@@ -157,8 +161,10 @@ export default function PatientDashboard() {
                 onClick={() => navigateToAppointment(appointment._id)}
                 className="mt-5 p-5 shadow-2xl cursor-pointer"
               >
-                <p className="text-2xl">{appointment.description}</p>
-                <p className="text-xl">{appointment.dateCreated}</p>
+                <p className="text-3xl font-bold">{appointment.description}</p>
+                <p className="text-xl text-zinc-500">
+                  {new Date(Date(appointment?.dateCreated)).toDateString()}
+                </p>
               </div>
             ))}
         </div>
@@ -173,8 +179,10 @@ export default function PatientDashboard() {
                 onClick={() => navigateToAppointment(appointment._id)}
                 className="mt-5 p-5 shadow-2xl cursor-pointer"
               >
-                <p className="text-2xl">{appointment.description}</p>
-                <p className="text-xl">{appointment.dateCreated}</p>
+                <p className="text-3xl font-bold">{appointment.description}</p>
+                <p className="text-xl text-zinc-500">
+                  {new Date(Date(appointment?.dateCreated)).toDateString()}
+                </p>
               </div>
             ))}
         </div>

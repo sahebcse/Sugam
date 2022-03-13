@@ -31,7 +31,7 @@ export default function DoctorDashboard() {
 
   const navigateToRespondSos = () => [navigate("/respond_to_sos")];
   return (
-    <div className="col-span-7 md:col-span-5">
+    <div className="col-span-7 md:col-span-5 mb-5">
       <div className="mt-10 bg-gradient-to-r from-indigo-600 to-indigo-100 py-20 rounded-xl grid md:grid-cols-2">
         <div className="p-16">
           <h1 className="text-5xl font-semibold text-white">सुगम</h1>
@@ -110,10 +110,14 @@ export default function DoctorDashboard() {
           {bookedAppointments.map((appointment) => {
             return (
               <div onClick={() => navigate(`/appointment/${appointment._id}`)}>
-                <div className="mt-5 p-5 shadow-2xl bg-red-300 cursor-pointer">
-                  <p className="text-2xl">{appointment.description}</p>
-                  <p className="text-xl">{appointment.dateCreated}</p>
-                  <p className="text-xl">{appointment._id}</p>
+                <div className="mt-5 mb-3 p-5 shadow-2xl border-2 border-blue-800 cursor-pointer rounded-xl hover:border-white group hover:bg-blue-600 transition ease-out hover:ease-linear">
+                  <p className="text-3xl font-bold group-hover:text-white">
+                    {appointment.description}
+                  </p>
+                  <p className="text-xl text-zinc-600 group-hover:text-white">
+                    {new Date(Date(appointment?.dateCreated)).toDateString()}
+                  </p>
+                  <p className="text-base text-zinc-400">{appointment._id}</p>
                 </div>
               </div>
             );
@@ -128,11 +132,15 @@ export default function DoctorDashboard() {
               <div>
                 <div
                   onClick={() => navigate(`/appointment/${appointment._id}`)}
-                  className="mt-5 p-5 shadow-2xl bg-red-300 cursor-pointer"
+                  className="mt-5 mb-3 p-5 shadow-2xl border-red-800 cursor-pointer rounded-xl hover:border-white group hover:bg-red-400 transition ease-out hover:ease-linear border-2"
                 >
-                  <p className="text-2xl">{appointment.description}</p>
-                  <p className="text-xl">{appointment.dateCreated}</p>
-                  <p className="text-xl">{appointment._id}</p>
+                  <p className="text-3xl font-bold group-hover:text-white">
+                    {appointment.description}
+                  </p>
+                  <p className="text-xl text-zinc-600 group-hover:text-white">
+                    {new Date(Date(appointment?.dateCreated)).toDateString()}
+                  </p>
+                  <p className="text-base text-zinc-400">{appointment._id}</p>
                 </div>
               </div>
             );
