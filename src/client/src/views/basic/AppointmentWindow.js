@@ -59,6 +59,7 @@ export default function AppointmentWindow() {
                     Video
                 </div>
                 <UserInfo appointment={appointment}/>
+                
                 <div className=" rounded border p-3 rounded-xl shadow-2xl hover:shadow-sm cursor-pointer" onClick={()=>navigate(`/prescription/${appointmentId}`, {state:appointment?.prescription})}>
                 <img src={require('../../components/Appointment/static/medicine.png')} className='mx-auto h-64'/>
                     Prescription

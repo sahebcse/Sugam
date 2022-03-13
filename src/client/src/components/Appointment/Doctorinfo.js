@@ -35,8 +35,12 @@ const Doctorinfo = ({appointment}) => {
   }, [appointment])
   return (
     <div className='p-5 place-content-center rounded-xl shadow-2xl hover:shadow-sm cursor-pointer' >
-      <img src={require('./static/doctor.png')} className='mx-auto h-64' onClick={handleModalOpen}/>
+      <div onClick={handleModalOpen}>
+      <img src={require('./static/doctor.png')} className='mx-auto h-64' />
+      
       Doctor Information
+      </div>
+      
       <Modal 
         open={modalOpen}
         onClose={handleClose}

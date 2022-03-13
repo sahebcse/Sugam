@@ -30,19 +30,23 @@ const Userinfo = ({appointment}) => {
   }, [appointment])
   return (
     <div className='p-5 place-content-center rounded-xl shadow-2xl hover:shadow-sm cursor-pointer'>
-      <img src={require('./static/user.png')} className='mx-auto h-64' onClick={handleModalOpen}/>
-      User Information 
+      <div onClick={handleModalOpen}>
+        <img src={require('./static/user.png')} className='mx-auto h-64' />
+        User Information 
+        
+      </div>  
       <Modal 
-        open={modalOpen}
-        onClose={handleClose}
-        >
-        <Box sx={style}>
-          <button onClick={handleClose}>Close Modal</button>
-          <p>Full Name: {appointment?.patient.fullName} </p>
-          <p>Email: {appointment?.patient.email}</p>
-          <MapGeolocation />
-        </Box>
-      </Modal>
+          open={modalOpen}
+          onClose={handleClose}
+          >
+          <Box sx={style}>
+            <button onClick={handleClose}>Close Modal</button>
+            <p>Full Name: {appointment?.patient.fullName} </p>
+            <p>Email: {appointment?.patient.email}</p>
+            <MapGeolocation />
+          </Box>
+        </Modal>
+ 
     </div>
   )
 }
