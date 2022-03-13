@@ -2,11 +2,13 @@ import React,{useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createEmergency } from '../../api'
 import MapGeolocation from '../Map/MapGeolocation'
+import MapMarker from '../Map/MapMarker'
 
 export default function CreateSos() {
     const [description, setDescription]=useState('')
     const [date, setDate]=useState('')
     const [typeOfEmergency, setTypeOfEmergency]=useState('heart attack')
+    const [mapState, setMapState]=useState({latitude: 0, longitude: 0, zoom: 14})
     const [coordinates, setCoordinates]=useState({latitude: 0, longitude: 0})
     const patient=JSON.parse(localStorage.getItem('profile'))
     const navigate=useNavigate()
@@ -45,8 +47,8 @@ export default function CreateSos() {
             pincode: '824231',
             typeOfEmergency: typeOfEmergency,
             patientId: patient._id,
-            latitude: coordinates.latitude,
-            longitude: coordinates.longitude
+            latitude: mapState.latitude,
+            longitude: mapState.longitude
             }
         
             console.log(formData)
@@ -57,10 +59,11 @@ export default function CreateSos() {
 
     useEffect(()=>
     {
+        
         navigator.geolocation.getCurrentPosition(pos=>{
             console.log(pos)
-            setCoordinates({latitude: pos.coords.latitude, longitude: pos.coords.longitude})
-        })
+            setMapState({latitude: pos.coords.latitude, longitude: pos.coords.longitude, zoom: 7})
+        }) 
     }, [])
   return (
     <div className='grid grid-cols-7'>
@@ -89,7 +92,7 @@ export default function CreateSos() {
                                     
             </div>
             <h2 className='text-3xl font-semibold mt-5'>Patient Location</h2>
-            <MapGeolocation />
+            <MapMarker mapState={mapState} setMapState={setMapState}/>
             
             <button onClick={handleAppointmentSubmit} className='bg-red-400 hover:bg-red-600 w-full p-5 mt-5 rounded-2xl'>
                 Submit
