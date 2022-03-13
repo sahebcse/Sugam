@@ -45,27 +45,28 @@ import DoctorChatWindow from "./components/chat/DoctorChatWindow";
 import HealthcareWorkerChatWindow from "./components/chat/HealthcareWorkerChatWindow";
 import ConfirmPrescription from "./components/HealthWorker/ConfirmPrescription";
 import WorkerRespondToSos from "./components/HealthWorker/WorkerRespondToSos";
+import Settings from "./views/basic/Settings";
 import Footer from "./views/basic/Footer";
 
 function App() {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <div className="App">
-        <Router>
-          <NotificationContainer />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/login" element={<SuperLogin />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/book_appointment" element={<BookAppointment />} />
-            <Route path="/create_sos" element={<CreateSos />} />
-
-            <Route path="/medicines" element={<Medicine />} />
+    <div className="App">
+      <Router>
+        <NotificationContainer />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/login" element={<SuperLogin />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/book_appointment" element={<BookAppointment />} />
+          <Route path="/create_sos" element={<CreateSos />} />
+         
+          <Route path="/medicines" element={<Medicine />} />
+          <Route path="/editProfile" element={<Settings />} />
 
             <Route
               path="/video"

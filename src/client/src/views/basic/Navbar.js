@@ -1,44 +1,5 @@
 
-// import React from "react";
 import { useSelector } from "react-redux";
-// import { NavLink } from "react-router-dom";
-
-// const Navbar = () => {
-//   const account = useSelector((state) => state.Auth);
-
-//   return (
-//     <div
-//       className="navbar bg-zinc-500 w-full fixed top-0 left-0 h-10 flex items-center justify-between"
-//       style={{ color: "white" }}
-//     >
-//       <div className="logo mx-12 font-bold">
-//         <NavLink to="/">LOGO</NavLink>
-//       </div>
-//       <div className="content mr-8">
-//         <ul className="flex items-center justify-center">
-//           <NavLink className="mx-10" to="/">
-//             Place1
-//           </NavLink>
-//           <NavLink className="mx-10" to="/">
-//             Place2
-//           </NavLink>
-//           <div className="mx-10" to="/login">
-//             {!account.logged_in ? (
-//               <NavLink to="/login">Login</NavLink>
-//             ) : (
-//               <div className="acc bg-blue-400 px-2">
-//                 {account.user.slice(0, 3).toUpperCase()}
-//               </div>
-//             )}
-//           </div>
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import styled from "styled-components";
@@ -95,9 +56,12 @@ export default function Navbar() {
               {!user ? (
                 <NavLinks to="/login">Login</NavLinks>
               ) : (
-                <div className="acc text-white bg-blue-400 px-2">
-                  {user.fullName.slice(0, 3).toUpperCase()}
-                </div>
+                <NavItem>
+                  <div className="acc text-white bg-blue-400 px-2">
+                    {user.fullName.slice(0, 3).toUpperCase()}
+                  </div>
+                  <NavLinks to='/editProfile'>Edit</NavLinks>
+                </NavItem>
               )}
             </div>
 
