@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import CreatePrescription from '../Doctor/CreatePrescription'
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -17,40 +16,67 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '0px solid #000',
     boxShadow: 24,
+    overflow:'scroll',
     p: 4,
-    overflow:"scroll"
   };
-  
 
 const Prescription = () => {
 
     const {id}=useParams()
     const User = JSON.parse(localStorage.getItem('profile'))
     const {state}= useLocation()
-    const [prescriptions,setPrescriptions]=useState(state)
+    const [prescriptions,setPrescriptions]=useState(state.allprescription)
     console.log(prescriptions)
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+
+    const [showPresModal, setShowPresModal] = useState(false);
+    const [currentPres, setCurrentPres] = useState(null);
+    const [showFormModal, setShowFormModal] = useState(false);
+
+
+    const handleSelectPres = (pres)=>{
+        setCurrentPres(pres)
+        setShowPresModal(true)
+    }
 
 
   return (
-      <div>
+      <div className="m-2 p-4">
+        {/* Modal for viewing prescription */}
+        {User?.userType==="DOCTOR" && <div className="w-full flex justify-center">
+            <button
+                className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button"
+                onClick={() => setShowFormModal(true)}
+            >
+                Create Prescription
+            </button>
+        </div>}
+        {/* Modal for creating Prescription */}
 
-    <div>
-        {prescriptions.map(pres=>{
-            return (
-                <div>
-                    pres._id
-                </div>
-            )
-        })}
-    </div>
-    {true && <div >
-        <CreatePrescription />
-    </div>}
+
+        <Modal
+            open={showFormModal}
+            onClose={()=>setShowFormModal(false)}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            >
+            <Box sx={style}>
+                <CreatePrescription/>
+            </Box>
+        </Modal>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {prescriptions.map(pres=>{
+                return (
+                    <div onClick={() =>handleSelectPres(pres)}>
+                    { pres._id}
+                    </div>
+                )
+            })}
+        </div>
         </div>
   )
 }

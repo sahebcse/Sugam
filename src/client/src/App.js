@@ -32,6 +32,8 @@ import RespondToSos from "./components/Doctor/RespondToSos";
 import CreatePrescription from './components/Doctor/CreatePrescription'
 import Prescription from "./components/Appointment/Prescription";
 
+import Medicine from "./components/Medicine";
+
 
 import Video from './components/conference/Video'
 import MapMarker from "./components/Map/MapMarker";
@@ -65,6 +67,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/book_appointment" element={<BookAppointment />} />
           <Route path="/create_sos" element={<CreateSos />} />
+          
+          <Route path="/medicines" element={<Medicine />} />
 
 
           <Route path="/video" element={<Navigate to={`/room/${uuidv4()}`} replace />} />
