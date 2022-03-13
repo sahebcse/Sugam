@@ -28,7 +28,7 @@ export default function Medicine() {
     { field: 'id', headerName: 'id', headerClassName: 'super-app-theme--header' },
     { field: 'brand_name', headerClassName: 'super-app-theme--header',headerName: 'Brand Name', width: 300 },
     { field: 'dosage_form', headerClassName: 'super-app-theme--header', headerName: 'Form of dosage', width: 500 },
-    { field: 'strength', headerClassName: 'super-app-theme--header', headerName: 'Strength', width: 500 }
+    { field: 'strength', headerClassName: 'super-app-theme--header', headerName: 'Strength', width: 600 }
   ]
 
   const rows = drugList.map((data,i) => ({
@@ -44,7 +44,8 @@ export default function Medicine() {
     <Box
       sx={{
         height: 700,
-        width: 1,
+        width: "80%",
+        margin: '0 auto',
         
         borderColor: 'primary.light',
         '& .super-app-theme--header': {
