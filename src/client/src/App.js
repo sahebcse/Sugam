@@ -68,44 +68,50 @@ function App() {
           <Route path="/medicines" element={<Medicine />} />
           <Route path="/editProfile" element={<Settings />} />
 
-          <Route
-            path="/video"
-            element={<Navigate to={`/room/${uuidv4()}`} replace />}
-          />
+            <Route
+              path="/video"
+              element={<Navigate to={`/room/${uuidv4()}`} replace />}
+            />
 
-          <Route path={`/room/:id`} element={<Video />} />
+            <Route path={`/room/:id`} element={<Video />} />
 
-          <Route path="/order_prescription" element={<OrderPrescription />} />
-          <Route path="/confirm_appointment" element={<ConfirmAppointment />} />
-          <Route path="/createPrescription" element={<CreatePrescription />} />
-          <Route path="/respond_to_sos" element={<RespondToSos />} />
+            <Route path="/order_prescription" element={<OrderPrescription />} />
+            <Route
+              path="/confirm_appointment"
+              element={<ConfirmAppointment />}
+            />
+            <Route
+              path="/createPrescription"
+              element={<CreatePrescription />}
+            />
+            <Route path="/respond_to_sos" element={<RespondToSos />} />
 
-          <Route path="/map_marker" element={<MapMarker />} />
-          <Route path="/map_geolocation" element={<MapGeolocation />} />
-          <Route path="/map_two_points" element={<MapTwoPoints />} />
-          <Route path="/map_custom_source" element={<MapCustomSource />} />
+            <Route path="/map_marker" element={<MapMarker />} />
+            <Route path="/map_geolocation" element={<MapGeolocation />} />
+            <Route path="/map_two_points" element={<MapTwoPoints />} />
+            <Route path="/map_custom_source" element={<MapCustomSource />} />
 
-          <Route
-            path="/appointment/:appointmentId"
-            element={<AppointmentWindow />}
-          />
-          <Route path="/prescription/:id" element={<Prescription />} />
+            <Route
+              path="/appointment/:appointmentId"
+              element={<AppointmentWindow />}
+            />
+            <Route path="/prescription/:id" element={<Prescription />} />
 
-          {/* HEALTHWORKER DASHBOARD ROUTES */}
-          <Route
-            exact
-            path="/confirm_prescription"
-            element={<ConfirmPrescription />}
-          />
-          <Route
-            exact
-            path="/worker_respond_to_sos"
-            element={<WorkerRespondToSos />}
-          />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+            {/* HEALTHWORKER DASHBOARD ROUTES */}
+            <Route
+              exact
+              path="/confirm_prescription"
+              element={<ConfirmPrescription />}
+            />
+            <Route
+              exact
+              path="/worker_respond_to_sos"
+              element={<WorkerRespondToSos />}
+            />
+          </Routes>
+        </Router>
+      </div>
+    </>
   );
 }
 
