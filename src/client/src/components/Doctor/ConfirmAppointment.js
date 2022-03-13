@@ -7,9 +7,10 @@ import {getUnconfirmedAppoinment, confirmAppointment} from '../../actions/User'
 export default function ConfirmAppointment() {
   const User = JSON.parse(localStorage.getItem('profile'))
   const navigate = useNavigate()
+  const [coordinates, setCoordinates]=useState({latitude: 0, longitude: 0})
 
   const handleConfirm = (id)=>{
-    const sendData = {id:id, doctorId:User._id}
+    const sendData = {id:id, doctorId:User._id, doctorLatitude: coordinates.latitude, doctorLongitude: coordinates.longitude}
     confirmAppointment(sendData, navigate)
     
   }
@@ -20,6 +21,12 @@ export default function ConfirmAppointment() {
       getUnconfirmedAppoinment(setAppoinments);
   },[])
 
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(pos=>{
+      console.log(pos)
+      setCoordinates({latitude: pos.coords.latitude, longitude: pos.coords.longitude})
+  })
+  }, [])
   console.log(appointments)
 
   return (
