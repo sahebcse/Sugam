@@ -45,6 +45,7 @@ import DoctorChatWindow from "./components/chat/DoctorChatWindow";
 import HealthcareWorkerChatWindow from "./components/chat/HealthcareWorkerChatWindow";
 import ConfirmPrescription from "./components/HealthWorker/ConfirmPrescription";
 import WorkerRespondToSos from "./components/HealthWorker/WorkerRespondToSos";
+import PeriodTracker from "./components/Patient/PeriodTracker";
 
 
 function App() {
@@ -90,6 +91,9 @@ function App() {
           {/* HEALTHWORKER DASHBOARD ROUTES */}
           <Route exact path="/confirm_prescription" element={<ConfirmPrescription/>} />
           <Route exact path="/worker_respond_to_sos" element={<WorkerRespondToSos/>} />
+
+
+          <Route exact path='/period_tracker' element={<PeriodTracker/>} />
 
 
         </Routes>

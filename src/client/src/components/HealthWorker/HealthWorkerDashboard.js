@@ -49,7 +49,7 @@ export default function HealthWorkerDashboard() {
             </p>
             <p className=''>
 
-            </p>
+            </p> 
         </div>
 
         <div onClick={navigateToWorkerRespondSos}  className='p-5 place-content-center shadow-2xl hover:shadow-sm cursor-pointer'>

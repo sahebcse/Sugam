@@ -31,6 +31,11 @@ export default function PatientDashboard() {
         console.log(aid);
         navigate('/appointment/'+aid)
     }
+
+    const navigateToPeriodTracker=()=>{
+        navigate('/period_tracker');
+    }
+
     useEffect(async ()=>{
         console.log("This is running")
         const appointmentResp=await getAppointmentsByPatient(patient._id)
@@ -86,8 +91,17 @@ export default function PatientDashboard() {
 
                     </p>
                 </div>
-                
 
+                <div onClick={navigateToPeriodTracker} className='p-5 shadow-2xl place-content-center hover:shadow-sm cursor-pointer'>
+                    <img src={require('./static/period-tracker.jfif')} className='mx-auto h-64' />
+                    <p className='text-2xl font-semibold mx-auto text-center mt-5'>
+                        Track my Periods
+                    </p>
+                    <p className=''>
+                    </p>
+                </div>
+
+                
             </div>
             
                 <div className="w-full flex justify-center m-10">

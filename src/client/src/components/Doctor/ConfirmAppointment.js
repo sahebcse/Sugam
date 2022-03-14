@@ -32,6 +32,6 @@ export default function ConfirmAppointment() {
           </div>
         )
       })}
-    </div>
+    </div> 
   )
 }
