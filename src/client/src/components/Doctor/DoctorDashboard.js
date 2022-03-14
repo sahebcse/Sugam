@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getBookedAppointments,
   getResolvedAppointments,
 } from "../../actions/User";
+import { useSelector } from "react-redux";
 
 export default function DoctorDashboard() {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ export default function DoctorDashboard() {
   const [currentAppointments, setCurrentAppointments] = useState(0);
   const [bookedAppointments, setBookedAppointments] = useState([]);
   const [resolvedAppointments, setResolvedAppointments] = useState([]);
+  const divRef=useRef(null)
+  const lang=useSelector((state)=>state.Language)
 
   useEffect(() => {
     getBookedAppointments(setBookedAppointments, {
@@ -28,6 +31,18 @@ export default function DoctorDashboard() {
   const navigateToConfirmAppointment = () => {
     navigate("/confirm_appointment");
   };
+
+  const scrollToAppointments=()=>
+  {
+    if (divRef)
+    {
+      divRef.current.scrollIntoView()
+    }
+    else
+    {
+      console.log("The divref is null")
+    }
+  }
 
   const navigateToRespondSos = () => [navigate("/respond_to_sos")];
   return (
@@ -78,7 +93,7 @@ export default function DoctorDashboard() {
           <p className=""></p>
         </div>
 
-        <div className="p-5 place-content-center shadow-sm cursor-pointer rounded-xl bg-green-100  transition duration-150 ease-out hover:ease-in hover:shadow-green-400 hover:shadow-lg hover:bg-green-200 group">
+        <div onClick={scrollToAppointments} className="p-5 place-content-center shadow-sm cursor-pointer rounded-xl bg-green-100  transition duration-150 ease-out hover:ease-in hover:shadow-green-400 hover:shadow-lg hover:bg-green-200 group">
           <img
             src={require("./static/prescription.png")}
             className="mx-auto h-64 group-hover:scale-90  transition duration-150 ease-out hover:ease-in"
@@ -90,7 +105,7 @@ export default function DoctorDashboard() {
         </div>
       </div>
 
-      <div className="w-full flex justify-center m-10">
+      <div ref={divRef} className="w-full flex justify-center m-10">
         <button
           className="px-4 py-2 bg-blue-500 text-3xl m-1 font-semibold rounded focus:bg-green-500 hover:bg-blue-700 text-white"
           onClick={() => setCurrentAppointments(0)}

@@ -93,6 +93,7 @@ export const confirmPrescription = async (setPrescriptions)=>{
 
       if (response.status !== 200) throw Error(response.data.message);
       const data = response.data;
+      console.log(data)
       setPrescriptions(data)
       console.log(data)
     } catch (error) {
