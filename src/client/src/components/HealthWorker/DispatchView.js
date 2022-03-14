@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import Map, {Marker, GeolocateControl, NavigationControl, ScaleControl, Layer, Source} from 'react-map-gl';
+import { useParams } from 'react-router-dom';
+import { getDispatchById } from '../../api';
 import pin from './static/pin.png'
 import pinblue from './static/pinblue.png'
 
 //This is not an actual fucking hash map ... this is a real fucking map 
 
 export default function DispatchView() {
+    const {id}=useParams()
     const [mapState, setMapState]=useState({longitude: 85.29009,
         latitude: 23.29577,
         zoom: 10})
@@ -28,9 +31,13 @@ export default function DispatchView() {
         }
       };
     
-    useEffect(()=>
-    {
-        console.log(mapState)
+    useEffect(async ()=>
+    {   
+        const {data}=await getDispatchById(id)
+        setMarker1State({longitude: data.startLong, latitude: data.startLat})
+        setMarker2State({longitude: data.goalLong, latitude: data.goalLat})
+        console.log(data)
+        
     }, [mapState])
     
    
