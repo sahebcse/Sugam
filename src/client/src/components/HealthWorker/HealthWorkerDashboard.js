@@ -4,6 +4,7 @@ import {
   getBookedPrescriptions,
   getResolvedPrescriptions,
 } from "../../actions/User";
+import { getDispatchesByHelperId } from "../../api";
 
 export default function HealthWorkerDashboard() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function HealthWorkerDashboard() {
   const [currentPrescriptions, setCurrentPrescriptions] = useState(0);
   const [bookedPrescriptions, setBookedPrescriptions] = useState([]);
   const [resolvedPrescriptions, setResolvedPrescriptions] = useState([]);
-
+  const [dispatches, setDispatches]=useState([])
   useEffect(() => {
     getBookedPrescriptions(setBookedPrescriptions, {
       id: user._id,
@@ -23,11 +24,24 @@ export default function HealthWorkerDashboard() {
       id: user._id,
       status: "resolved",
     });
+
   }, []);
 
+
+  useEffect(async ()=>
+  {
+    const {data} = await getDispatchesByHelperId(user?._id)
+    console.log(data)
+    setDispatches(data)
+  }, [])
   const navigateToConfirmPrescription = () => {
     navigate("/confirm_prescription");
   };
+
+  const openDispatch=(id)=>
+  {
+    navigate(`/dispatch/${id}`)
+  }
 
   const navigateToWorkerRespondSos = () => [navigate("/worker_respond_to_sos")];
   return (
@@ -93,6 +107,12 @@ export default function HealthWorkerDashboard() {
         >
           Resolved Prescriptions
         </button>
+        <button
+          className="px-4 py-2 bg-blue-300 text-3xl m-1 font-semibold rounded focus:bg-green-500 hover:bg-blue-700"
+          onClick={() => setCurrentPrescriptions(2)}
+        >
+          Dispatches
+        </button>
       </div>
 
       {currentPrescriptions === 0 && (
@@ -123,6 +143,17 @@ export default function HealthWorkerDashboard() {
                         <p className='text-xl'>{appointment._id}</p>
                         </div> */}
                 resolved prescription {idx}
+              </div>
+            );
+          })}
+        </div>
+      )}
+         {currentPrescriptions === 2 && (
+        <div className="mt-10">
+          {dispatches.map((dispatch, idx) => {
+            return (
+              <div className="cursor-pointer shadow-xl bg-green-200 hover:bg-green-300" onClick={()=>openDispatch(dispatch._id)}>
+                Dispatch {idx}
               </div>
             );
           })}

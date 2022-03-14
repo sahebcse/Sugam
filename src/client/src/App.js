@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import React from "react";
+import React, {useEffect} from "react";
 import "./App.css";
 import {
   Route,
@@ -48,10 +48,12 @@ import ConfirmPrescription from "./components/HealthWorker/ConfirmPrescription";
 import WorkerRespondToSos from "./components/HealthWorker/WorkerRespondToSos";
 import Settings from "./views/basic/Settings";
 import Footer from "./views/basic/Footer";
+import DispatchView from "./components/HealthWorker/DispatchView";
+import {useSelector} from 'react-redux'
 
 function App() {
   const dispatch = useDispatch();
-
+ 
   return (
     <div className="App">
       <Router>
@@ -110,6 +112,11 @@ function App() {
               path="/worker_respond_to_sos"
               element={<WorkerRespondToSos />}
             />
+
+            <Route
+              exact
+              path="/dispatch/:id"
+              element={<DispatchView />} />
           </Routes>
         </Router>
       </div>

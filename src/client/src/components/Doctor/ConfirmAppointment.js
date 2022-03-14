@@ -19,6 +19,17 @@ export default function ConfirmAppointment() {
 
   const [appointments, setAppoinments]=useState([]);
 
+  const handleConfirmFromMap=()=>
+  {
+    try{
+      const sendData = {id:x._id, doctorId:User._id, doctorLatitude: coordinates.latitude, doctorLongitude: coordinates.longitude}
+      confirmAppointment(sendData, navigate)
+    }
+    catch(error)
+    {
+      console.log(error)
+    }
+  }
   useEffect(()=>{
       getUnconfirmedAppoinment(setAppoinments);
   },[])
@@ -47,7 +58,8 @@ export default function ConfirmAppointment() {
     <div>
         {x?<div>{x.patient}</div>:<div></div>}
         <NearbyMapMarkers lat={coordinates.latitude} long={coordinates.longitude} setX={setX}/>
-      </div>s
+        <button onClick={handleConfirmFromMap} className='px-3 py-2 m-2 bg-green-300 hover:bg-green-500'>Confirm Appointment from Map</button>
+      </div>
     </div>
   )
 }

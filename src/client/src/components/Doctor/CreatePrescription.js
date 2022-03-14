@@ -4,14 +4,15 @@ import { bookAppointment } from '../../api'
 import { NotificationManager } from 'react-notifications'
 import {uploadPrescription} from '../../actions/User'
 import {Buffer} from 'buffer'
-
+import { useSelector } from 'react-redux'
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) 
+
 
 export default function CreatePrescription({patientId}) {
 
   const navigate=useNavigate()
-
+  const lang=useSelector((state)=>state.Language)
   const [doctorPrescribed, setDoctorPrescribed]=useState('')
   const [generalInstructions, setGeneralInstructions]=useState('')
   const [title, setTitle]= useState('')
@@ -70,13 +71,13 @@ export default function CreatePrescription({patientId}) {
     <div className='grid grid-cols-7 mt-3 '>
         <div className='col-span-7 md:col-span-4 md:col-start-2  mt-16 shadow-3xl border-solid border-green-400 border-2 p-5 rounded-3xl'>
         <div className="m-1 w-full flex justify-center">
-              Create prescription
+              Create prescription{lang=="ENGLISH"?<p>Create prescription</p>:<p>नुस्खा बनाएं</p>}
             </div>
             <div class="mb-4">
               <label class="block text-gray-700 text-2xl font-bold mb-2" for="username">
-                Title
+                {lang=="ENGLISH"?<p>Title</p>:<p>शीर्षक</p>}
               </label>
-              <input onChange={handleTitleChange} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-2 border-blue-700 focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"/>
+              <input onChange={handleTitleChange} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-2 border-blue-700 focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Title"/>
             </div>
             <h2 className='text-3xl font-semibold mt-5'>General Instruction</h2>
             <textarea onChange={handleInstructionChange} 

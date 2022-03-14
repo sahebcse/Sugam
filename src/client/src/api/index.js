@@ -44,6 +44,8 @@ export const uploadPrescription = (sendData)=> axios.post(`${URL}/prescription`,
 
 export const confirmPrescription = ()=> axios.get(`${URL}/prescription`)
 
+export const getAllPrescriptions = () => axios.get(`${URL}/prescription`)
+
 export const assignPrescription = (sendData)=> axios.post(`${URL}/assignprescription`,sendData)
 
 export const getNearbyAppointments=(sendData)=>axios.post(`${URL}/nearby/patients/5`, sendData)
@@ -65,6 +67,15 @@ export const getPatientById = (sendData) =>axios.get(`${URL}/patient/${sendData.
 
 export const editPatientById = (sendData) => axios.put(`${URL}/patient/${sendData.patientId}`, sendData);
 
+//Dispatch API
+
+export const dispatchPrescription = (sendData) => axios.post(`${URL}/dispatch`, sendData)
+
+export const getDispatchById = (sendData) => axios.get(`${URL}/dispatch/${sendData}`)
+
+export const editDispatchById = (sendData) => axios.put(`${URL}/dispatch/${sendData}`)
+
+export const getDispatchesByHelperId = (sendData) => axios.get(`${URL}/dispatches/${sendData}`)
 // Medicine API
 
 // export const getMedicines = () => axios.get(`https://api.fda.gov/drug/drugsfda.json?limit=50`);

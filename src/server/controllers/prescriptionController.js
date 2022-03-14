@@ -14,7 +14,8 @@ const createPrescription=async (req, res)=>
             doctor: req.body.doctorId,
             generalInstructions: req.body.generalInstructions,
             doctorPrescribed: req.body.doctorPrescribed,
-            scanPic:req.body.scanPic
+            scanPic:req.body.scanPic,
+            appointment: req.body.appointmentId
         })
         const savedPrescription=await prescription.save()
         appointment.prescription.push(savedPrescription._id)

@@ -8,7 +8,7 @@ const mongoose=require('mongoose')
 const app=express()
 
 const CONNECTION_URL= "http://localhost:3000"
-const MONGODB_URL='mongodb://localhost/hillyhealth04'
+const MONGODB_URL='mongodb://localhost/hillyhealth69'
 const PORT=process.env.PORT||5000
 
 app.use(express.json({ limit: "30mb", extended: true }));
@@ -24,6 +24,7 @@ const prescriptionRoutes=require('./routes/prescriptionRoutes')
 const appointmentRoutes=require('./routes/appointmentRoutes')
 const emergencyRoutes=require('./routes/emergencyRoutes')
 const chatRoutes=require('./routes/chatRoutes');
+const dispatchRoutes=require('./routes/dispatchRoutes')
 
 app.use(patientRoutes)
 app.use(doctorRoutes)
@@ -33,7 +34,7 @@ app.use(prescriptionRoutes)
 app.use(appointmentRoutes)
 app.use(emergencyRoutes)
 app.use(chatRoutes)
-
+app.use(dispatchRoutes)
 
 
 app.get('/', (req, res)=>
