@@ -1,5 +1,21 @@
 # Sugam
 
+# Prototype UI Snippets
+<br> <br>
+## Doctor Dashboard
+<br> <br>
+![ss2.png](ss1.png) 
+<br> <br>
+
+## Patient Dashboard
+<br> <br>
+![ss3.png](ss3.png) 
+<br> <br>
+
+## Drone Delivery and GPS based location Tracing by Medical Service Provider
+<br> <br>
+![ss2.png](ss2.png)
+
 ## Core functional features:
 
 -   Video/voice consultation with healthcare experts and certified professionals using peerjs or similar library. Video quality should be adjustable to enable easier connection in hilly and remote areas with slower internet speeds and lack of broadband connectivity.
