@@ -26,6 +26,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import { config } from "../../config/urlConfig";
 
+import { v4 as uuidv4 } from "uuid";
+
 const URL = config.url;
 
 const socket = io(URL);
@@ -90,7 +92,12 @@ export default function Room() {
 
   //Getting user Media permissons
   useEffect(() => {
-    const newPeer = new Peer();
+   
+    const newPeer = new Peer(uuidv4(), {
+      host: 'localhost',
+      port:9001,
+      path:'/myapp'
+    });
     setMyPeer(newPeer);
     newPeer.on("open", (id) => {
       console.log("user connected...", id);
