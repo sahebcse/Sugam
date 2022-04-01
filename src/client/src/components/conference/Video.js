@@ -94,9 +94,9 @@ export default function Room() {
   useEffect(() => {
    
     const newPeer = new Peer(uuidv4(), {
-      host: 'localhost',
-      port:9001,
-      path:'/myapp'
+      host: 'peerservex.herokuapp.com',
+      port:80,
+      path:'/peerjs/myapp'
     });
     setMyPeer(newPeer);
     newPeer.on("open", (id) => {
